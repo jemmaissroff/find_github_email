@@ -1,0 +1,4 @@
+# rspec failure tracking
+.rspec_status
+
+find_github_email-0.1.0.gem

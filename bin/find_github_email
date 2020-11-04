@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "optparse"
+require "find_github_email"
+
+begin
+  username = nil
+  OptionParser.new do |opts|
+    opts.banner = "Usage: find_github_email [options] <username>\n\n" \
+      "GitHub access token must be set to find a user's email address.\n" \
+      "For instructions on how to create a GitHub access token, " \
+      "see <>\n\n"
+
+    opts.on(
+      "-g GITHUB_ACCESS_TOKEN",
+      "--github-access-token GITHUB_ACCESS_TOKEN",
+      "Set GitHub access token. Only needs to be set once!"
+    ) do |access_token|
+      FindGithubEmail::GithubAccessToken.github_access_token = (access_token)
+      exit if ARGV.empty? && !username
+    end
+
+    opts.on(
+      "-u USERNAME",
+      "--username USERNAME",
+      "Find GitHub email for username. " \
+      "Also accepted as the last argument without a flag"
+    ) { |user| username = user }
+
+    opts.on("-h", "--help", "Prints this help") do |_|
+      puts opts
+      exit
+    end
+  end.parse!
+
+  username ||= ARGV[0]
+
+  raise FindGithubEmail::Errors::NoUsernameProvided unless username
+
+  puts FindGithubEmail::Finder.find(username)
+rescue FindGithubEmail::Errors::Error => e
+  puts e.message
+end
