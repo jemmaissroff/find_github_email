@@ -37,7 +37,6 @@ You will only need to run this command once 🎉. It will store your API token a
 For example:
 
     $ find_github_email torvalds
-    Found an email address on GitHub for torvalds:
 	torvalds@linux-foundation.org
 
 

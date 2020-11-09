@@ -32,20 +32,12 @@ module FindGithubEmail
 
       raise Errors::NoEmailData.new(username: username) if found_emails.empty?
 
-      if found_emails.size > 1
-        plural = "es"
-        article = "these"
-      else
-        article = "an"
-      end
-
-      "Found #{article} email address#{plural} on GitHub for #{username}:\n" +
-        found_emails.join("\n")
+      found_emails
     end
 
     def self.find_emails(data, username)
       username = username.downcase
-      data["nodes"].flat_map do |node|
+      data["nodes"].compact.flat_map do |node|
         node["refs"]["nodes"].flat_map do |sub_node|
           author = sub_node["target"]["author"]
           login = author["user"]&.[]"login"

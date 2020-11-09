@@ -5,7 +5,7 @@ require "optparse"
 require "find_github_email"
 
 begin
-  username = nil
+  options = {}
   OptionParser.new do |opts|
     opts.banner = "Usage: find_github_email [options] <username>\n\n" \
       "GitHub access token must be set to find a user's email address.\n" \
@@ -26,7 +26,11 @@ begin
       "--username USERNAME",
       "Find GitHub email for username. " \
       "Also accepted as the last argument without a flag"
-    ) { |user| username = user }
+    ) { |username| options[:username] = username }
+
+    opts.on("-v", "--verbose", "Wordier output") do
+      options[:verbose] = true
+    end
 
     opts.on("-h", "--help", "Prints this help") do |_|
       puts opts
@@ -34,11 +38,28 @@ begin
     end
   end.parse!
 
-  username ||= ARGV[0]
+  username = options[:username] || ARGV[0]
 
   raise FindGithubEmail::Errors::NoUsernameProvided unless username
 
-  puts FindGithubEmail::Finder.find(username)
+  found_emails = FindGithubEmail::Finder.find(username)
+
+  output = found_emails.join("\n")
+
+  if options[:verbose]
+    if found_emails.size > 1
+      plural = "es"
+      article = "these"
+    else
+      article = "an"
+    end
+
+    output =
+      "Found #{article} email address#{plural} on GitHub for #{username}:\n" +
+      output
+  end
+
+  puts output
 rescue FindGithubEmail::Errors::Error => e
   abort(e.message)
 end

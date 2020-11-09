@@ -78,14 +78,14 @@ RSpec.describe FindGithubEmail::Finder do
 
     context "when there is one email for a user" do
       it "returns the email address" do
-        expect(subject).to match(/#{email}/)
+        expect(subject).to eq([email])
       end
 
       context "when the user's profile email is not set" do
         let(:user_data) { super().merge({ "email" => nil }) }
 
         it "returns the email address" do
-          expect(subject).to match(/#{email}/)
+          expect(subject).to eq([email])
         end
       end
 
@@ -100,7 +100,7 @@ RSpec.describe FindGithubEmail::Finder do
         end
 
         it "returns the email address" do
-          expect(subject).to match(/#{email}/)
+          expect(subject).to eq([email])
         end
       end
     end
@@ -117,8 +117,7 @@ RSpec.describe FindGithubEmail::Finder do
       end
 
       it "returns the email address" do
-        expect(subject).to match(/#{email}/)
-        expect(subject).to match(/#{other_email}/)
+        expect(subject).to eq([email, other_email])
       end
     end
   end
