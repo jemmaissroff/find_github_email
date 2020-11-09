@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    find_github_email (0.1.0)
+    find_github_email (1.0.0)
       graphql (~> 1.2.0)
       graphql-client (~> 0.2.3)
 
