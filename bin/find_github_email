@@ -40,5 +40,5 @@ begin
 
   puts FindGithubEmail::Finder.find(username)
 rescue FindGithubEmail::Errors::Error => e
-  puts e.message
+  abort(e.message)
 end

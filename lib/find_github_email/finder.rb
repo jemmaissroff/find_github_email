@@ -20,7 +20,7 @@ module FindGithubEmail
       raise Errors::NoGithubUser.new(username: username) unless data
 
       # See spec/find_github_email/finder_spec.rb for examples of what the data
-      # format looke like
+      # format looks like
       found_emails =
         ([data["email"]] +
          find_emails(data["repositories"], username) +

@@ -22,4 +22,11 @@ Gem::Specification.new do |spec|
     file.match(%r{^(spec)/})
   end
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "graphql", "~> 1.2.0"
+  spec.add_dependency "graphql-client", "~> 0.2.3"
+
+  spec.add_development_dependency "rspec", "~> 3.10"
+  spec.add_development_dependency "rubocop", "~> 1.2.0"
+  spec.add_development_dependency "rubocop-rspec", "~> 2.0.0"
 end
