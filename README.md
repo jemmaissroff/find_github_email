@@ -1,6 +1,11 @@
 # Find GitHub Email
 
-☀️ **The warmest start to a cold email** ❄️
+[![security](https://hakiri.io/github/jemmaissroff/find_github_email/main.svg)](https://hakiri.io/github/jemmaissroff/find_github_email/main)
+[![Tests](https://github.com/jemmaissroff/find_github_email/workflows/Main/badge.svg)](https://github.com/jemmaissroff/find_github_email/actions?query=workflow%3AMain)
+[![Gem Version](https://img.shields.io/gem/v/find_github_email.svg)](https://rubygems.org/gems/find_github_email)
+[![Gem Downloads](https://img.shields.io/gem/dt/find_github_email.svg)](https://rubygems.org/gems/find_github_email)
+
+### ☀️ **The warmest start to a cold email** ❄️
 
 Find GitHub Email allows you to find any GitHub user's email addresses based on their commit history and GitHub profile.
 
