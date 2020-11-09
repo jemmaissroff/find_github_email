@@ -18,7 +18,7 @@ begin
       "Set GitHub access token. Only needs to be set once!"
     ) do |access_token|
       FindGithubEmail::GithubAccessToken.github_access_token = (access_token)
-      exit if ARGV.empty? && !username
+      exit if ARGV.empty? && !options[:username]
     end
 
     opts.on(
