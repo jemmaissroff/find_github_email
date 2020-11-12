@@ -10,6 +10,8 @@
 
 Find GitHub Email allows you to find any GitHub user's email addresses based on their commit history and GitHub profile.
 
+Check out [this post](https://jemma.dev/blog/find-github-email) for a little more background on the gem.
+
 ## ⏬ Installation
 
     $ gem install find_github_email
