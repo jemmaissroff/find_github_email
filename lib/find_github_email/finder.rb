@@ -3,7 +3,7 @@
 require "find_github_email"
 
 module FindGithubEmail
-  # Finds a user's GitHub email addres by their username using GitHub's
+  # Finds a user's GitHub email address by their username using GitHub's
   # GrapQL API
   class Finder
     def self.find(username)
